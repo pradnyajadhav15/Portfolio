@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+﻿/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   darkMode: 'class',
@@ -42,6 +42,10 @@ module.exports = {
         xl: 'calc(var(--radius) + 8px)',
         '2xl': 'calc(var(--radius) + 16px)',
         '3xl': 'calc(var(--radius) + 24px)',
+      },
+      screens: {
+        'xs': '375px',
+        '3xl': '1920px',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'sans-serif'],
