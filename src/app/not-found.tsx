@@ -8,49 +8,50 @@ export default function NotFound() {
   const router = useRouter();
 
   const handleGoHome = () => {
-    router?.push('/');
+    router.push('/');
   };
 
   const handleGoBack = () => {
-    if (typeof window !== 'undefined') {
-      window.history?.back();
-    }
+    window.history.back();
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
-      <div className="text-center max-w-md">
-        <div className="flex justify-center mb-6">
-          <div className="relative">
-            <h1 className="font-display text-9xl font-bold text-primary opacity-20">404</h1>
-          </div>
+    <main className="flex min-h-[100dvh] items-center justify-center bg-background px-4 py-10 sm:px-6">
+      <section className="w-full max-w-md text-center">
+        <div className="mb-5 flex justify-center sm:mb-6">
+          <h1 className="font-display text-[clamp(5.5rem,25vw,9rem)] font-bold leading-none text-primary/20">
+            404
+          </h1>
         </div>
 
-        <h2 className="font-display text-2xl font-semibold text-foreground mb-2">
+        <h2 className="font-display text-2xl font-semibold text-foreground sm:text-3xl">
           Page Not Found
         </h2>
-        <p className="text-foreground/70 mb-8">
+
+        <p className="mt-3 text-sm leading-6 text-foreground/70 sm:text-base">
           The page you&apos;re looking for doesn&apos;t exist. Let&apos;s get you back!
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
           <button
+            type="button"
             onClick={handleGoBack}
-            className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors duration-200 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:w-auto"
           >
             <Icon name="ArrowLeftIcon" size={16} />
             Go Back
           </button>
 
           <button
+            type="button"
             onClick={handleGoHome}
-            className="inline-flex items-center justify-center gap-2 border border-border bg-background text-foreground px-6 py-3 rounded-lg font-medium hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-6 py-3 font-medium text-foreground transition-colors duration-200 hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:w-auto"
           >
             <Icon name="HomeIcon" size={16} />
             Back to Home
           </button>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

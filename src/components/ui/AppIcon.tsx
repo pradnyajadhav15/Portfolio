@@ -6,50 +6,66 @@ import * as HeroIconsSolid from '@heroicons/react/24/solid';
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 
 type IconVariant = 'outline' | 'solid';
+type IconName =
+  | keyof typeof HeroIcons
+  | keyof typeof HeroIconsSolid
+  | (string & {});
 
-interface IconProps {
-    name: string; // Changed to string to accept dynamic values
-    variant?: IconVariant;
-    size?: number;
-    className?: string;
-    onClick?: () => void;
-    disabled?: boolean;
-    [key: string]: any;
+interface IconProps
+  extends Omit<React.SVGProps<SVGSVGElement>, 'width' | 'height' | 'onClick'> {
+  name: IconName;
+  variant?: IconVariant;
+  size?: number;
+  className?: string;
+  onClick?: React.MouseEventHandler<SVGSVGElement>;
+  disabled?: boolean;
 }
 
-function Icon({
-    name,
-    variant = 'outline',
-    size = 24,
-    className = '',
-    onClick,
-    disabled = false,
-    ...props
+export default function Icon({
+  name,
+  variant = 'outline',
+  size = 24,
+  className = '',
+  onClick,
+  disabled = false,
+  'aria-label': ariaLabel,
+  ...props
 }: IconProps) {
-    const iconSet = variant === 'solid' ? HeroIconsSolid : HeroIcons;
-    const IconComponent = iconSet[name as keyof typeof iconSet] as React.ComponentType<any>;
+  const iconSet = variant === 'solid' ? HeroIconsSolid : HeroIcons;
 
-    if (!IconComponent) {
-        return (
-            <QuestionMarkCircleIcon
-                width={size}
-                height={size}
-                className={`text-gray-400 ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}
-                onClick={disabled ? undefined : onClick}
-                {...props}
-            />
-        );
-    }
+  const IconComponent = iconSet[
+    name as keyof typeof iconSet
+  ] as React.ElementType<React.SVGProps<SVGSVGElement>> | undefined;
 
+  const isInteractive = Boolean(onClick) && !disabled;
+
+  const iconClassName = [
+    disabled && 'cursor-not-allowed opacity-50',
+    isInteractive && 'cursor-pointer transition-opacity hover:opacity-80',
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const sharedProps = {
+    width: size,
+    height: size,
+    className: iconClassName,
+    onClick: isInteractive ? onClick : undefined,
+    'aria-disabled': disabled || undefined,
+    'aria-hidden': ariaLabel ? undefined : true,
+    role: ariaLabel ? 'img' : undefined,
+    ...props,
+  };
+
+  if (!IconComponent) {
     return (
-        <IconComponent
-            width={size}
-            height={size}
-            className={`${disabled ? 'opacity-50 cursor-not-allowed' : onClick ? 'cursor-pointer hover:opacity-80' : ''} ${className}`}
-            onClick={disabled ? undefined : onClick}
-            {...props}
-        />
+      <QuestionMarkCircleIcon
+        {...sharedProps}
+        className={`text-gray-400 ${iconClassName}`}
+      />
     );
-}
+  }
 
-export default Icon; 
+  return <IconComponent {...sharedProps} />;
+}

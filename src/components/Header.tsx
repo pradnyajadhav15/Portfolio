@@ -1,5 +1,6 @@
 ﻿'use client';
-import React, { useState, useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import AppLogo from '@/components/ui/AppLogo';
 
@@ -17,86 +18,130 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
+
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-      const handleScroll = () => setMenuOpen(false);
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
+    if (!menuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMenuOpen(false);
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
+    };
   }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-background/90 backdrop-blur-xl border-b border-border shadow-sm'
+          ? 'border-b border-border bg-background/90 shadow-sm backdrop-blur-xl'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* <Link href="/" className="flex items-center gap-2 group">
-          <AppLogo size={36} /> */}
-          {/* <span className="font-display font-semibold text-lg text-foreground tracking-tight hidden sm:block">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
+        {/* <Link
+          href="/"
+          onClick={closeMenu}
+          className="flex items-center gap-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          aria-label="Pradnya Jadhav home"
+        >
+          <AppLogo size={34} />
+          <span className="font-display hidden text-lg font-semibold tracking-tight text-foreground sm:block">
             Pradnya
-          </span> */}
-        {/* </Link> */}
+          </span>
+        </Link> */}
 
-        <nav className="hidden md:flex items-center gap-1 px-5 py-2 bg-secondary/70 backdrop-blur-sm rounded-full border border-border">
-          {navLinks?.map((link) => (
+        <nav className="hidden items-center gap-1 rounded-full border border-border bg-secondary/70 px-3 py-2 backdrop-blur-sm lg:flex">
+          {navLinks.map((link) => (
             <a
-              key={link?.href}
-              href={link?.href}
-              className="px-4 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-all duration-200"
+              key={link.href}
+              href={link.href}
+              className="rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
-              {link?.label}
+              {link.label}
             </a>
           ))}
         </nav>
 
         <a
           href="#contact"
-          className="hidden md:inline-flex px-6 py-2.5 bg-primary text-primary-foreground rounded-full text-sm font-semibold hover:bg-primary/90 transition-all shadow-md shadow-primary/20"
+          className="hidden rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:inline-flex"
         >
           Hire Me
         </a>
 
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-muted transition-colors"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          type="button"
+          className="flex min-h-11 min-w-11 flex-col items-center justify-center gap-1.5 rounded-lg transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
           <span
-            className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}
+            className={`block h-0.5 w-6 bg-foreground transition-all duration-300 ${
+              menuOpen ? 'translate-y-2 rotate-45' : ''
+            }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}
+            className={`block h-0.5 w-6 bg-foreground transition-all duration-300 ${
+              menuOpen ? 'opacity-0' : ''
+            }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}
+            className={`block h-0.5 w-6 bg-foreground transition-all duration-300 ${
+              menuOpen ? '-translate-y-2 -rotate-45' : ''
+            }`}
           />
         </button>
       </div>
+
       {menuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border shadow-xl">
-          <nav className="flex flex-col px-6 py-6 gap-1">
-            {navLinks?.map((link) => (
+        <div
+          id="mobile-navigation"
+          className="absolute left-0 right-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-border bg-background/95 shadow-xl backdrop-blur-xl sm:max-h-[calc(100dvh-5rem)] lg:hidden"
+        >
+          <nav className="flex flex-col gap-1 px-4 py-5 sm:px-6 sm:py-6">
+            {navLinks.map((link) => (
               <a
-                key={link?.href}
-                href={link?.href}
-                onClick={() => setMenuOpen(false)}
-                className="py-3 px-4 text-base font-medium text-foreground hover:text-primary hover:bg-secondary rounded-xl transition-all"
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                className="rounded-xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
-                {link?.label}
+                {link.label}
               </a>
             ))}
+
             <a
               href="#contact"
-              onClick={() => setMenuOpen(false)}
-              className="mt-3 py-3 px-4 bg-primary text-primary-foreground rounded-xl text-base font-semibold text-center hover:bg-primary/90 transition-all"
+              onClick={closeMenu}
+              className="mt-3 rounded-xl bg-primary px-4 py-3 text-center text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               Hire Me
             </a>

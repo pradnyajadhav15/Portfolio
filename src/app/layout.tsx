@@ -20,10 +20,14 @@ const poppins = Poppins({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  colorScheme: 'light',
+  themeColor: '#ffffff',
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  ),
   title: 'Pradnya Jadhav — Creative Portfolio',
   description:
     'Creative portfolio of Pradnya Jadhav — showcasing projects, skills, and experience.',
@@ -37,9 +41,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${baloo2.variable} ${poppins.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${baloo2.variable} ${poppins.variable}`}
+      suppressHydrationWarning
+    >
       <body className={poppins.className}>{children}</body>
     </html>
   );

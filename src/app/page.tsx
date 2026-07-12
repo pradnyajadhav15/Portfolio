@@ -10,15 +10,19 @@ import ContactSection from '@/components/ContactSection';
 
 export default function HomePage() {
   return (
-    <main className="relative overflow-x-hidden bg-background">
+    <div className="min-w-0 overflow-x-clip bg-background">
       <Header />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <WorkExperienceSection />
-      <PortfolioSection />
-      <ContactSection />
+
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <WorkExperienceSection />
+        <PortfolioSection />
+        <ContactSection />
+      </main>
+
       <Footer />
-    </main>
+    </div>
   );
 }
