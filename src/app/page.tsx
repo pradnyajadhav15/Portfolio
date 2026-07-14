@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
@@ -7,6 +7,7 @@ import SkillsSection from '@/components/SkillsSection';
 import WorkExperienceSection from '@/components/WorkExperienceSection';
 import PortfolioSection from '@/components/PortfolioSection';
 import ContactSection from '@/components/ContactSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
         <SkillsSection />
         <WorkExperienceSection />
         <PortfolioSection />
+        <TestimonialsSection />
         <ContactSection />
       </main>
 

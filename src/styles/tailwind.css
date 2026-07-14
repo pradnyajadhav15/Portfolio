@@ -351,3 +351,38 @@
 .animate-scale-in {
   animation: scaleIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
+.dark {
+  --background: #1F1410;
+  --foreground: #F5EDE3;
+  --primary: #E8A4B4;
+  --primary-foreground: #1F1410;
+  --secondary: #2D1F19;
+  --secondary-foreground: #F5EDE3;
+  --accent: #C4768A;
+  --accent-foreground: #F5EDE3;
+  --muted: #2D1F19;
+  --muted-foreground: #C9B8AC;
+  --card: #2A1C16;
+  --card-foreground: #F5EDE3;
+  --border: #3D2C24;
+  --input: #3D2C24;
+  --ring: #E8A4B4;
+}
+
+.dark {
+  --background: #1F1410;
+  --foreground: #F5EDE3;
+  --primary: #E8A4B4;
+  --primary-foreground: #1F1410;
+  --secondary: #2D1F19;
+  --secondary-foreground: #F5EDE3;
+  --accent: #C4768A;
+  --accent-foreground: #F5EDE3;
+  --muted: #2D1F19;
+  --muted-foreground: #C9B8AC;
+  --card: #2A1C16;
+  --card-foreground: #F5EDE3;
+  --border: #3D2C24;
+  --input: #3D2C24;
+  --ring: #E8A4B4;
+}
