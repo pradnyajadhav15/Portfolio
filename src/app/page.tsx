@@ -4,6 +4,8 @@ import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import SkillsSection from '@/components/SkillsSection';
+import TechStackSection from '@/components/TechStackSection';
+import CurrentlyLearningSection from '@/components/CurrentlyLearningSection';
 import WorkExperienceSection from '@/components/WorkExperienceSection';
 import PortfolioSection from '@/components/PortfolioSection';
 import ContactSection from '@/components/ContactSection';
@@ -18,6 +20,8 @@ export default function HomePage() {
         <HeroSection />
         <AboutSection />
         <SkillsSection />
+        <TechStackSection />
+        <CurrentlyLearningSection />
         <WorkExperienceSection />
         <PortfolioSection />
         <TestimonialsSection />
@@ -28,3 +32,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+

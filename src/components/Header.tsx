@@ -38,6 +38,7 @@ export default function Header() {
           : 'bg-transparent'
       }`}
     >
+      <a href="#home" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] bg-primary text-primary-foreground px-4 py-2 rounded-full">Skip to content</a>
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
         
 
