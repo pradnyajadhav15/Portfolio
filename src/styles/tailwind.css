@@ -386,3 +386,17 @@
   --input: #3D2C24;
   --ring: #E8A4B4;
 }
+
+@media print {
+  header, footer, .float-gentle, .float-gentle-delayed, .blob-primary, .blob-accent, .dot-grid-bg, .grain-overlay {
+    display: none !important;
+  }
+  section {
+    padding: 1rem 0 !important;
+    break-inside: avoid;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

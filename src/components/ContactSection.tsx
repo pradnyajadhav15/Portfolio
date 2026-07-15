@@ -173,6 +173,11 @@ export default function ContactSection() {
                     </span>
                   </div>
 
+                  <span className="inline-flex items-center gap-1.5 self-start rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-medium text-muted-foreground">
+                    <LocationIcon className="h-3.5 w-3.5" />
+                    Open to relocation across India
+                  </span>
+
                   <div className="space-y-2">
                     <h3 className="font-display text-2xl font-semibold text-foreground sm:text-3xl">
                       Hiring or have
@@ -344,3 +349,13 @@ function PaperclipIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
+function LocationIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+    </svg>
+  );
+}
+
