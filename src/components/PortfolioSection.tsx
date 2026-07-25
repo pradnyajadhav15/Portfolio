@@ -50,8 +50,8 @@ const projects: Project[] = [
     imageAlt: 'KisaanConnect farmer-to-consumer marketplace screenshot',
     techStack: ['React.js', 'Express.js', 'MongoDB', 'JWT'],
     keyFeatures: ['Direct Listings', 'Crop Health AI', 'Farming Q&A', 'NGO Connections'],
-    liveLink: '',
-    githubLink: '',
+    liveLink: 'https://kisaan-connect-kappa.vercel.app/',
+    githubLink: 'https://github.com/pradnyajadhav15/KisaanConnect',
   },
   {
     id: 3,
@@ -76,12 +76,18 @@ const projects: Project[] = [
     title: 'Ganapati Project',
     category: 'MERN Stack E-Commerce',
     description: 'A multilingual e-commerce platform for R. Ramesh Arts Studio, a family-rooted Ganpati idol business in Solapur.',
-    image: '/assets/images/no_image.png',
+    image: '/assets/images/projects/Ganapati-project/home.png',
     imageAlt: 'Ganapati Project e-commerce platform screenshot',
     techStack: ['React.js', 'Node.js', 'MongoDB'],
     keyFeatures: ['Online + COD/UPI Payment', 'Pre-Booking', 'Owner Dashboard', 'Multilingual'],
-    liveLink: '',
-    githubLink: '',
+    liveLink: 'https://www.rramesharts.com/',
+    githubLink: 'https://github.com/pradnyajadhav15/Ganapati-project',
+     gallery: [
+      { src: '/assets/images/projects/Ganapati-project/home.png', label: 'Home' },
+      { src: '/assets/images/projects/Ganapati-project/murties.png', label: 'Featured Murtis' },
+      { src: '/assets/images/projects/Ganapati-project/shastra.png', label: 'Tools & Accessories' },
+      { src: '/assets/images/projects/Ganapati-project/media.png', label: 'Media Coverage' }
+    ],
   },
 ];
 
