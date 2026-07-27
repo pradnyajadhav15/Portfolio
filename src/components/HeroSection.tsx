@@ -64,14 +64,14 @@ export default function HeroSection() {
               <a href="#contact" className="px-8 py-4 bg-secondary border border-border text-foreground rounded-full font-semibold text-base hover:bg-muted transition-all text-center">
                 Get In Touch
               </a>
-              <a
+              {/* <a
                 href="/resume.pdf"
                 download
                 className="px-8 py-4 border-2 border-primary text-primary rounded-full font-semibold text-base hover:bg-primary hover:text-primary-foreground transition-all text-center inline-flex items-center justify-center gap-2"
               >
                 <DownloadIcon className="w-4 h-4" />
                 Download Resume
-              </a>
+              </a> */}
             </div>
 
             <div className="hero-word flex items-center gap-6 pt-2 opacity-0">

@@ -3,13 +3,13 @@
 import { useEffect, useRef } from 'react';
 
 const contactDetails = [
-  {
-    icon: 'phone',
-    label: 'Phone',
-    value: '+91 87669 77048',
-    href: 'tel:+918766977048',
-    external: false,
-  },
+  // {
+  //   icon: 'phone',
+  //   label: 'Phone',
+  //   value: '+91 87669 77048',
+  //   href: 'tel:+918766977048',
+  //   external: false,
+  // },
   {
     icon: 'email',
     label: 'Email',
