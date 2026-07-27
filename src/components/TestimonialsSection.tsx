@@ -4,17 +4,17 @@ import React, { useEffect, useRef } from 'react';
 const testimonials = [
   {
     quote: "Pradnya has a rare mix of technical depth and clarity — she picks up new concepts fast and explains them even faster. Her workshop was one of the most well-organized sessions our students attended.",
-    name: 'Professor Name',
+    name: 'Prof. Amatul Ayesha',
     role: 'Faculty, DBATU',
   },
   {
     quote: "I attended Pradnya's web development workshop and walked away with real, working skills. She's patient, thorough, and genuinely invested in helping beginners succeed.",
-    name: 'Workshop Attendee',
-    role: 'Student, DBATU',
+    name: 'Ashutosh Kale',
+    role: '1st year Student, DBATU',
   },
   {
     quote: "Working with Pradnya on our AWS virtual program was great — she asks the right questions and ships clean, well-documented solutions.",
-    name: 'Program Mentor',
+    name: 'Rohit Patil',
     role: 'AWS APAC Virtual Program',
   },
 ];
