@@ -46,12 +46,18 @@ const projects: Project[] = [
     title: 'KisaanConnect',
     category: 'MERN Stack Marketplace',
     description: 'A farmer-to-consumer marketplace that removes middlemen with AI-powered farming tools, letting farmers list produce directly to consumers.',
-    image: '/assets/images/no_image.png',
+    image: '/assets/images/projects/KisaanConnect/home.png',
     imageAlt: 'KisaanConnect farmer-to-consumer marketplace screenshot',
     techStack: ['React.js', 'Express.js', 'MongoDB', 'JWT'],
     keyFeatures: ['Direct Listings', 'Crop Health AI', 'Farming Q&A', 'NGO Connections'],
     liveLink: 'https://kisaan-connect-kappa.vercel.app/',
     githubLink: 'https://github.com/pradnyajadhav15/KisaanConnect',
+    gallery: [
+      { src: '/assets/images/projects/KisaanConnect/home.png', label: 'Home' },
+      { src: '/assets/images/projects/KisaanConnect/working.png', label: 'How it works' },
+      { src: '/assets/images/projects/KisaanConnect/farmer-dashboard.png', label: 'Farmer Dashboard' },
+      { src: '/assets/images/projects/KisaanConnect/consumer-dashboard.png', label: 'Consumer Dashboard' }
+    ],
   },
   {
     id: 3,
