@@ -51,7 +51,7 @@ const projects: Project[] = [
     imageAlt: 'Mango Farm website screenshot',
     techStack: ['Vite', 'React.js', 'Tailwind CSS'],
     keyFeatures: ['Multilingual', 'Real-Time Collaboration', 'Responsive UI'],
-    liveLink: 'https://mango-farm.netlify.app/',
+    liveLink: 'https://mango-farm-omega.vercel.app/',
     githubLink: 'https://github.com/pradnyajadhav15/Mango-Farm',
     gallery: [
       { src: '/assets/images/projects/mango-farm/home.png', label: 'Home' },
